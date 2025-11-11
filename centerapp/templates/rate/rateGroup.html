@@ -1,0 +1,41 @@
+{% extends 'adminBase.html' %}
+{% load static %}
+{% block main %}
+
+<h2 class="text-center text-primary">Guruhlar ro'yxati</h2>
+<div class="container">
+    <table class="table table-bordered border-primary">
+        <thead>
+        <th>№</th>
+        <th>Guruh Nomi</th>
+
+
+        </thead>
+        <tbody>
+        {%csrf_token%}
+        {% for item in groups %}
+        <tr id="{{item.id}}">
+            <td class="p-2">{{ forloop.counter }}.</td>
+            <td class="p-2"><a href="{% url ''%}">{{item.groupName}}</a></td>
+
+        </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+     <div class="row mt-5 ">
+
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 ml-5 ">
+
+
+            <button type="button" class=" btn btn-primary bg-primary btn_delete  "><a class="text-white"
+                                                                                      href="{% url 'adminUser'%}">
+                Orqaga</a></button>
+        </div>
+    </div>
+
+</div>
+
+</div>
+
+{% endblock %}

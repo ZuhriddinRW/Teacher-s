@@ -1,0 +1,35 @@
+{% extends 'adminBase.html' %}
+{% load static %}
+{% block title %}
+Admin:Guruhlarning dars kunlari
+{% endblock %}
+{% block main %}
+
+<h2 class="text-center text-primary">Guruhlarning dars kunlari</h2>
+
+<div class="container">
+
+
+    <table class="table table-bordered border-primary">
+        <thead>
+        <th class="text-muted">Toq kunlar:</th>
+        <th class="text-muted">Juft kunlar:</th>
+        </thead>
+        <tbody>
+        {%csrf_token%}
+        {% for item in day %}
+
+        <td class=" "><a href="{% url 'tableGroup' item.pk %}"> Guruhlarni ko'rish</a></td>
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+</div>
+<script>
+
+
+</script>
+
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'tachBase.html' %}
+{% load static %}
+{% block title %}
+Yuqlama:
+{% endblock %}
+
+{% block main %}
+
+
+<h2 class="text-center text-primary">{{student.lastname}}{{student}}ning qoldirgan darslari</h2>
+<div class="container">
+
+    <table class="table table-bordered border-primary">
+        <thead>
+        <th class="text-muted">№</th>
+        <th class="text-muted">Qoldirgan darslari:</th>
+
+        <th class="text-muted">Kelmagan:</th>
+        </thead>
+        <tbody>
+        {%csrf_token%}
+        {% for item in visit %}
+        <tr  id="{{item.id}}">
+            <td class=" ">{{ forloop.counter }}.</td>
+            <td class=" o">{{item.created_at}}  </td>
+            {%if item.rating %}
+
+            {% else%}
+             <td class="p-2 text-info bg-danger"> Kelmagan </td>
+            {% endif%}
+
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+</div>
+<script>
+
+
+</script>
+
+
+{% endblock %}

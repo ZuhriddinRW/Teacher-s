@@ -1,0 +1,51 @@
+{% extends 'adminBase.html' %}
+{% load static %}
+{% block title %}
+Oqituvchining ma'lumotlari
+{% endblock %}
+
+{% block main %}
+
+
+    <h2 class="text-center text-primary">{{teacher.lastname}} {{teacher.user.username}}ning ma'lumotlari</h2>
+
+<div class="container">
+
+
+    <table class="table table-bordered border-primary">
+        <thead>
+        <th class="text-muted">Ismi</th>
+        <th class="text-muted">Familyasi</th>
+        <th class="text-muted">Otasining ismi</th>
+        <th class="text-muted">tel</th>
+        <th class="text-muted">Kirish kodi</th>
+        <th class="text-muted">Tahrirlash</th>
+
+        </thead>
+        <tbody>
+        {%csrf_token%}
+
+        <tr id="{{item.id}}">
+            <td class=" text-dark"><a>{{teacher.user.username}}</a></td>
+            <td class=" text-dark"><a>{{teacher.lastname}}</a></td>
+            <td class=" text-dark"><a>{{teacher.middleName}}</a></td>
+            <td class=" text-dark"><a><a href="tel:{{teacher.phone}}">{{teacher.phone}}</a></a></td>
+            <td class=" text-dark">{{teacher.code}}</td>
+            <td class=" text-dark">
+                <a class="btn btn-sm btn-warning " href="{% url 'teacherUpdate' teacher.pk %}">
+                    Tahrirlash </a>
+
+            </td>
+        </tr>
+
+
+        </tbody>
+    </table>
+
+
+
+
+</div>
+
+
+{% endblock %}

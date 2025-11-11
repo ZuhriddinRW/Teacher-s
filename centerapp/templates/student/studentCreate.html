@@ -1,0 +1,22 @@
+{% extends 'adminBase.html' %}
+{% load static %}
+{% block title %}
+Admin:O'quvchi qo'shish
+{% endblock %}
+
+{% block main %}
+<form action="" method="post">
+   <h2 class="text-center text-primary ">
+       o'quvchi qo'shish
+   </h2>
+    {% csrf_token %}
+     {{form}}
+
+<div>
+     <input type="submit" CLASS="mt-4 mb-4 btn btn-primary"  value="Saqlash">
+
+</div>
+
+</form>
+
+{% endblock %}

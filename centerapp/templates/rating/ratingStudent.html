@@ -1,0 +1,43 @@
+{% extends 'adminBase.html' %}
+{% load static %}
+{% block title %}
+Admin:Rating
+{% endblock %}
+
+{% block main %}
+
+
+<h2 class="text-center text-primary">{{groups}} guruhning o'quvchilari</h2>
+<div class="container">
+
+    <table class="table table-bordered border-primary">
+        <thead>
+        <th class="text-muted">№</th>
+        <th class="text-muted">Fish</th>
+        <th class="text-muted">Ballarni ko'rish</th>
+        <th class="text-muted">Ball qo'yish</th>
+        </thead>
+        <tbody>
+        {%csrf_token%}
+        {% for item in students %}
+        <tr  id="{{item.id}}">
+            <td class=" ">{{ forloop.counter }}.</td>
+            <td class=" ">{{item.lastname}}  {{item.username}}</td>
+            <td class=" "><a href="{% url 'ratingStudentView' item.pk%}">Ballar</a></td>
+            <td class=" o"><a class="btn btn-sm btn-primary " href="{% url 'ratingStudentCreate' item.pk %}">
+               Ball qo'yish </a></td>
+<!--            <td class="p-2"><input type="checkbox" name="teacher_id[]" value="{{item.id}}" id="delete_teacher"></td>-->
+<!--        </tr>-->
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+</div>
+<script>
+
+
+</script>
+
+
+{% endblock %}

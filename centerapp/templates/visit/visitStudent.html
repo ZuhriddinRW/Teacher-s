@@ -1,0 +1,45 @@
+{% extends 'adminBase.html' %}
+{% load static %}
+{% block title %}
+Gruh O'quvchilari
+{% endblock %}
+
+{% block main %}
+
+
+<h2 class="text-center text-primary">O'quvchilar ro'yxati</h2>
+<div class="container">
+
+    <table class="table table-bordered border-primary">
+        <thead>
+        <th class="text-muted">№</th>
+        <th class="text-muted">Fish</th>
+        <th class="text-muted">Kelmaganlar</th>
+        </thead>
+        <tbody>
+        {%csrf_token%}
+        {% for item in students %}
+        <tr id="{{item.id}}">
+            <td class="">{{ forloop.counter }}.</td>
+            <td class=" "><a href="{% url 'visitStudentView' item.pk%}">{{item.lastname}}
+                {{item.username}}</a></td>
+
+            <td class=" "><input type="checkbox" name="teacher_id[]" value="{{item.id}}"
+                                 id="delete_teacher"></td>
+        </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+    <div class="mt-2 mb-2">
+
+        <button type="submit" id="delete_btn" class="btn btn_delete bg-primary ">Saqlash</button>
+    </div>
+</div>
+<script>
+
+
+</script>
+
+
+{% endblock %}

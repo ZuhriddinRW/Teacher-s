@@ -1,0 +1,18 @@
+{% extends 'adminBase.html' %}
+{% load static %}
+
+{% block main %}
+
+<h2 class="text-center text-primary">{{student.lastname}} {{student.username}}ning ma'lumotlari</h2>
+
+<form action="" method="post">
+    {% csrf_token %}
+     {{form}}
+
+<div>
+
+    <input type="submit" CLASS="mt-4 mb-4 btn btn-primary"  value="Saqlash">
+</div>
+</form>
+
+{% endblock %}

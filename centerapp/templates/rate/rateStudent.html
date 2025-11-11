@@ -1,0 +1,48 @@
+{% extends 'adminBase.html' %}
+{% load static %}
+{% block main %}
+
+
+<h2 class="text-center text-primary">O'quvchilar ro'yxati</h2>
+<div class="container">
+    <div>
+        <button type="button" class=" btn btn-primary  "><a class="text-white" href="{% url 'studentCreate'%}">
+            O'qituvchi qo'shish</a></button>
+    </div>
+    <table class="table table-bordered border-primary">
+        <thead>
+        <th>№</th>
+        <th>Ismi</th>
+        <th>Familyasi</th>
+        {% for item in months %}
+            <th>{{item.name}}</th>
+            {% endfor %}
+
+        </thead>
+        <tbody>
+        {%csrf_token%}
+        {% for item in students %}
+        <tr id="{{item.id}}">
+            <td class="">{{ forloop.counter }}.</td>
+            <td class=""><a href="{% url 'studentView' item.pk%}">{{item.username}}</a></td>
+            <td class=""><a href="{% url 'studentView' item.pk%}">{{item.lastname}}</a></td>
+            {% for month in months %}
+            <td class=""><a href="{% url 'rateCreate' item.pk month.pk%} ">{{month.name}}</a></td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+    <div class="mt-2 mb-2">
+
+        <button type="submit" id="delete_btn" class="btn btn_delete ">Delete</button>
+    </div>
+</div>
+<script>
+
+
+</script>
+
+
+{% endblock %}

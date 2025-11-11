@@ -1,0 +1,31 @@
+{% extends 'base1.html' %}
+{% load static %}
+{% block title %}
+Kuslar
+{% endblock %}
+
+
+{% block main %}
+<div class="p-3">
+<div class="row mt-5 p-5">
+    {%for item in advs%}
+    <div class="col-md-4 pb-30">
+        <div class="blog-card">
+            <div class="blog-card-thumb">
+                <a href="single-blog.html">
+
+                    <img src="{{ item.photo.url}}" alt="blog">
+                </a>
+            </div>
+            <div class="blog-card-content">
+                <h3><a href="{% url 'courseAdd' item.pk%}">{{item.name}}</a></h3>
+                <p>{{item.text | safe|linebreaks|truncatewords:25 }} </p>
+
+            </div>
+        </div>
+    </div>
+    {% endfor%}
+</div>
+</div>
+
+{% endblock %}

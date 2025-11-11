@@ -1,0 +1,44 @@
+{% extends 'tachBase.html' %}
+{% load static %}
+
+{% block title %}
+Gruhlar ro'yxati
+{% endblock %}
+{% block main %}
+
+
+<h2 class="text-center text-primary">Guruhlar ro'yxati</h2>
+<div class="container">
+
+    <table class="table table-bordered border-primary">
+        <thead>
+        <th class="text-muted">№</th>
+        <th class="text-muted">Guruh Nomi</th>
+        <th class="text-muted">O'qituvchisi</th>
+
+        </thead>
+        <tbody>
+        {%csrf_token%}
+        {% for item in groups %}
+        <tr  id="{{item.id}}">
+            <td class=" ">{{ forloop.counter }}.</td>
+            <td class=" "><a href="{% url 'teacherRatingStudent' item.pk%}">{{item.groupName}}</a></td>
+
+            <td class=" ">{{item.teacher.lastname}}   {{item.teacher}}  </td>
+
+
+<!--            <td class="p-2"><input type="checkbox" name="teacher_id[]" value="{{item.id}}" id="delete_teacher"></td>-->
+<!--        </tr>-->
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+</div>
+<script>
+
+
+</script>
+
+
+{% endblock %}

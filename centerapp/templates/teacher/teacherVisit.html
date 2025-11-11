@@ -1,0 +1,46 @@
+{% extends 'tachBase.html' %}
+{% load static %}
+{% block title %}
+Gruhlar ro'yxati
+{% endblock %}
+
+{% block main %}
+
+
+
+<h2 class="text-center text-primary">Gruhlar ro'yxati</h2>
+<div class="container">
+
+    <table class="table table-bordered border-primary">
+        <thead>
+        <th class="text-muted">№</th>
+        <th class="text-muted">Guruhlar:</th>
+        <th class="text-muted">Vaqti:</th>
+
+
+        </thead>
+        <tbody>
+        {%csrf_token%}
+        {% for item in groups %}
+        <tr id="{{item.id}}">
+            <td class=" ">{{ forloop.counter }}.</td>
+            <td class=" "><a href="{% url 'teacherStudent' item.pk %}">{{item.groupName}}</a></td>
+            <td class=" ">{{item.day}}/{{item.time}}</td>
+
+
+            {% endfor %}
+
+        </tbody>
+    </table>
+    <!--    <div class="mt-2 mb-2">-->
+
+    <!--        <button type="submit" id="delete_btn" class="btn btn_delete ">Delete</button>-->
+    <!--    </div>-->
+</div>
+<script>
+
+
+</script>
+
+
+{% endblock %}

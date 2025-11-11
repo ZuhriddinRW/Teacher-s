@@ -1,0 +1,56 @@
+{% extends 'adminBase.html' %}
+{% load static %}
+{% block title %}
+Admin:Guruh haqida
+{% endblock %}
+
+
+{% block main %}
+
+
+<h2 class="text-center text-primary">{{group.groupName}} guruhning ma'lumotlari</h2>
+
+<div class="container">
+
+    <table class="table table-bordered border-primary">
+        <thead>
+
+        <th class="text-muted">Guruh nomi</th>
+        <th class="text-muted">O'qituvchisi</th>
+        <th class="text-muted">Boshlangan vaqti</th>
+        <th class="text-muted">Tugash vaqti</th>
+        <th class="text-muted">Holat </th>
+        <th class="text-muted">Kursi </th>
+        <th class="text-muted">Kunlari </th>
+        <th class="text-muted">Vaqti </th>
+        <th class="text-muted">Tahrirlash</th>
+
+
+        </thead>
+        <tbody>
+        {%csrf_token%}
+
+        <tr id="{{item.id}}">
+            <td class=" text-dark"><a>{{group.groupName}}</a></td>
+            <td class="text-dark"><a>{{group.teacher}}</a></td>
+            <td  class=" text-dark"><a>{{group.startTime}}</a></td>
+            <td class=" text-dark"><a>{{group.finishTime}}</a></td>
+            <td class="text-dark">{{group.status}}</td>
+            <td class=" text-dark">{{group.course}}</td>
+            <td class=" text-dark">{{group.day}}</td>
+            <td class=" text-dark">{{group.time}}</td>
+            <td class=" text-dark">
+            <a class="btn btn-sm btn-warning " href="{% url 'groupUpdate' group.pk %}">
+               Tahrirlash </a>
+
+        </td>
+        </tr>
+
+
+        </tbody>
+    </table>
+
+</div>
+
+
+{% endblock %}

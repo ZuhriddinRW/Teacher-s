@@ -1,0 +1,57 @@
+{% load static %}<!--Main Navigation-->
+
+
+<div class="position-auto fixed-top   ">
+    <!-- Navbar -->
+    <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white mb-5 ">
+        <!-- Container wrapper -->
+        <div class="container-fluid">
+            <!-- Toggle button -->
+            <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-mdb-toggle="collapse"
+                    data-mdb-target="#sidebarMenu"
+                    aria-controls="sidebarMenu"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+            >
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <form class="d-none d-md-flex input-group w-auto my-auto">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home'%}">Asosiy</a>
+                    </li>
+
+                </ul>
+                <!-- Left links -->
+
+            </form>
+
+            <div class="d-flex ">
+
+
+                <!-- Right links -->
+                <ul class="navbar-nav  ">
+                    <!-- Notification dropdown -->
+                    {% if request.user.is_authenticated %}
+                    <span class=" navbar-text"> <a class="" href="{% url 'logoutPage' %}"> Logout, ({{request.user.username}}) </a> </span>
+
+                    {% else%}
+                    <span class="navbar-text "> <a href="{% url 'login'%}">Kirish</a> </span>
+                    {%endif%}
+
+
+                </ul>
+            </div>
+        </div>
+        <!-- Container wrapper -->
+    </nav>
+</div>
+<!-- Navbar -->
+
+<!--Main Navigation-->
+
+<!--Main layout-->

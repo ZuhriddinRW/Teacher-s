@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Bag'lanish
+{% endblock %}
+
+
+{% block main %}
+<!-- contact-section -->
+<section class="contact-section sec-pt-15 mt-5 p-5 ">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 pb-30">
+                <div class="sidebar-item mb-30">
+                    <div class="info-box">
+                        <h4>Aloqa uchun ma'lumotlar </h4>
+                        <div class="info-box-list">
+                            <div class="info-box-list-item info-box-list-label">
+                                <i class="flaticon-phone-call"></i>Telefon raqam:
+                            </div>
+                            <div class="info-box-list-item info-box-list-details">
+                                <a href="tel:+998900104001">+998900000000</a>
+                            </div>
+                        </div>
+                        <div class="info-box-list">
+                            <div class="info-box-list-item info-box-list-label">
+                                <i class="flaticon-email"></i>Email
+                            </div>
+                            <div class="info-box-list-item info-box-list-details">
+                                <a href="mailto:khayitovkhumoyun000@gmail.com">khayitovkhumoyun000@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="info-box-list">
+                            <div class="info-box-list-item info-box-list-label">
+                                <i class="flaticon-location"></i>Manzil
+                            </div>
+                            <div class="info-box-list-item info-box-list-details">
+                                Yunusobod 8:35\53
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sidebar-item">
+                    <div class="follow-box">
+                        <h3>Tarmoqlar:</h3>
+                        <ul class="social-list social-list-white">
+                            <li>
+                                <a href="https://www.facebook.com/"><i class="flaticon-facebook"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://www.twitter.com/"><i class="flaticon-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://www.youtube.com/"><i class="flaticon-youtube"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://www.instagram.com/"><i class="flaticon-instagram"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8 pb-30">
+                <div class="sub-section-title">
+                    <h2 class="sub-section-title-heading color-maincolor text-center">Bizga xabar yuboring</h2>
+                </div>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary btn-block">
+                        Send
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- .end contact-section -->
+<!-- map-section -->
+<div class="map-section pb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 pb-30">
+                <div class="map-box">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2469.873128971916!2d-1.2632018842209538!3d51.753643479676334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876c6a5ad05788f%3A0x9106ad157cc2a827!2sGeorge%20St%2C%20Oxford%2C%20UK!5e0!3m2!1sen!2sbd!4v1609934633929!5m2!1sen!2sbd"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- .end map-section -->
+
+
+{% endblock  %}

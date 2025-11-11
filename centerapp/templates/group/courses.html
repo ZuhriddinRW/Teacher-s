@@ -1,0 +1,96 @@
+{% extends 'adminBase.html' %}
+{% load static %}
+
+{% block title %}
+Admin:Kurslar
+{% endblock %}
+
+{% block main %}
+<!--<style>-->
+<!--    .container{-->
+<!--    position:relative;-->
+<!--    width:100%;-->
+
+<!--    margin:20px auto;-->
+<!--    }-->
+<!--    table{-->
+<!--    padding;10px;-->
+<!--    width:100%;-->
+<!--    height:auto;-->
+<!--    }-->
+<!--    table thead th{-->
+<!--    margin-bottom:20px;-->
+<!--    text-align:center;-->
+<!--    padding:20px o;-->
+<!--    text-transform:capitalize;-->
+<!--    font-size:20px;-->
+<!--    }-->
+<!--    table tbody td{-->
+<!--    padding:10 px 20px;-->
+<!--    border:1px solid rgb(34,33,33);-->
+<!--    font-size:18px;-->
+<!--    text-align:left;-->
+
+<!--    }-->
+<!--    .btn_delete{-->
+<!--    padding:8 px 20px;-->
+<!--    font-size:18px;-->
+<!--    text-align:center;-->
+<!--    width:180px;-->
+<!--    display:block;-->
+<!--    background-color:brown;-->
+<!--    color:#fff;-->
+<!--    cursor:pointer;-->
+<!--    }-->
+<!--    .btn_delete:hover{-->
+<!--    background-color:rgb(83,4,4);-->
+<!--    }-->
+
+
+
+
+
+
+<!--</style>-->
+
+<h2 class="text-center text-primary">Kurslar ro'yxati</h2>
+<div class="container">
+
+    <table class="table table-bordered border-primary">
+        <thead>
+        <th class="text-muted">№</th>
+        <th class="text-muted">Kurs Nomi</th>
+        <th class="text-muted">Tahrirlash</th>
+
+
+        </thead>
+        <tbody>
+        {%csrf_token%}
+        {% for item in course %}
+        <tr id="{{item.id}}">
+            <td class="">{{ forloop.counter }}.</td>
+            <td class=" "><a href="{% url 'courseGroup' item.pk%}">{{item.name}}</a></td>
+            <td class=" "><a class="btn btn-sm btn-warning " href="{% url 'courseUpdate' item.pk %}">
+                Tahrirlash </a></td>
+
+            {% endfor %}
+
+        </tbody>
+    </table>
+    <div class="row mt-5 ">
+
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 ml-5 ">
+            <button type="button" class=" btn btn-primary  "><a class="text-white" href="{% url 'courseCreate'%}"> Kurs
+                qo'shish</a></button>
+
+
+        </div>
+    </div>
+</div>
+<script>
+
+
+</script>
+
+
+{% endblock %}

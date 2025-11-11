@@ -1,0 +1,74 @@
+{% extends 'adminBase.html' %}
+{% load static %}
+{% block title %}
+Smslar ro'yxati
+{% endblock %}
+
+{% block main %}
+
+
+<h2 class="text-center text-primary">smslar</h2>
+<div class="container">
+
+    <table class="table table-bordered border-primary">
+        <thead>
+        <th class="text-muted">№</th>
+        <th class="text-muted">Mavzu:</th>
+
+        <th class="text-muted"> O'chirish</th>
+        <!--        <th class="text-muted">O'chirish</th>-->
+        </thead>
+        <tbody>
+        {%csrf_token%}
+        {% for item in sms %}
+        <tr id="{{item.id}}">
+            <td>{{ forloop.counter }}.</td>
+            {% if item.bool == False%}
+            <td class=" text-info"><a class="text-warning" href="{% url 'smsLook' item.pk %}">{{item.subject }}</a></td>
+
+           {% else %}
+             <td class=" text-info"><a href="{% url 'smsLook' item.pk %}">{{item.subject }}</a></td>
+
+            {% endif %}
+            <td class="delete "><a href="{% url 'smsDelete' item.pk %}" class="delete text-danger"
+            ><i class="fas fa-trash fa-1x m-1 "></i>Delete</a></td>
+        </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+</div>
+<div class="text-center">
+
+
+    {% if sms.has_other_pages %}
+    <ul class="pagination">
+        {% if sms.has_previous %}
+        <li class="div1 active"><a href="?page = {{sms.previous_page_number}}"> &laquo;</a></li>
+        {% else %}
+        <li class="disabled active div1"><span>&laquo;</span></li>
+        {% endif %}
+
+        {% for p in sms.paginator.page_range %}
+        {% if sms.number == p %}
+        <li class="active div1">
+            <span>{{p}}<span class="sr-only">(current)</span></span>
+        </li>
+        {% else %}
+        <li class="active div1">
+            <a href="?page={{ p }}">{{p}}</a>
+        </li>
+        {% endif %}
+        {% endfor %}
+
+        {% if sms.has_next %}
+        <li class="div1 active"><a href="?page = {{sms.next_page_number}}"> &raquo;</a></li>
+        {% else %}
+        <li class="disabled div1"><span>&raquo;</span></li>
+        {% endif %}
+    </ul>
+    {% endif %}
+</div>
+
+{% endblock %}

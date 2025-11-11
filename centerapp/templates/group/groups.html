@@ -1,0 +1,106 @@
+{% extends 'adminBase.html' %}
+{% load static %}
+{% block title %}
+Admin:Guruhlar
+{% endblock %}
+
+
+{% block main %}
+
+
+<h2 class="text-center text-primary">Guruhlarning holatlari </h2>
+<div class="container">
+
+    <table class="table table-bordered border-primary">
+        <thead>
+        <th class="text-muted">Barcha G:</th>
+        <th class="text-muted">Yig'ilayotgan G:</th>
+        <th class="text-muted">Active G:</th>
+        <th class="text-muted"> Yakunlangan G:</th>
+        </thead>
+        <tbody>
+        {%csrf_token%}
+        <td class="p-2 text-info"><a href="{% url 'deleteGroup' %}"> Guruhlar</a></td>
+
+        {% for item in status %}
+        <td class="p-2 text-info"><a href="{% url 'deleteGroups' item.pk %}"> Guruhlar</a></td>
+        {% endfor %}
+
+        </tbody>
+    </table>
+    <h2 class="text-center text-primary mt-5">Guruhlarning ro'yxati</h2>
+
+
+    <table class="table table-bordered border-primary">
+        <thead>
+        <th class="text-muted">№</th>
+        <th class="text-muted">Guruh Nomi</th>
+        <th class="text-muted">Holati</th>
+        <th class="text-muted">O'chirish</th>
+        </thead>
+        <tbody>
+        {%csrf_token%}
+        {% for item in groups %}
+        <tr id="{{item.id}}">
+            <td class=" ">{{ forloop.counter }}.</td>
+            <td class=" text-info"><a href="{% url 'groupView' item.pk%}">{{item.groupName}}</a></td>
+
+            <td class="">{{item.status}}</td>
+
+
+            <td class="delete "><a href="{% url 'groupDelete' item.pk %}" class="delete text-danger"
+            ><i class="fas fa-trash fa-1x m-1 "></i>Delete</a></td>
+        </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+    <div class="text-center">
+
+
+        {% if groups.has_other_pages %}
+        <ul class="pagination">
+            {% if groups.has_previous %}
+            <li class="div1 active"><a href="?page = {{groups.previous_page_number}}"> &laquo;</a></li>
+            {% else %}
+            <li class="disabled active div1"><span>&laquo;</span></li>
+            {% endif %}
+
+            {% for p in groups.paginator.page_range %}
+            {% if groups.number == p %}
+            <li class="active div1">
+                <span>{{p}}<span class="sr-only">(current)</span></span>
+            </li>
+            {% else %}
+            <li class="active div1">
+                <a href="?page={{ p }}">{{p}}</a>
+            </li>
+            {% endif %}
+            {% endfor %}
+
+            {% if groups.has_next %}
+            <li class="div1 active"><a href="?page = {{groups.next_page_number}}"> &raquo;</a></li>
+            {% else %}
+            <li class="disabled div1"><span>&raquo;</span></li>
+            {% endif %}
+        </ul>
+        {% endif %}
+    </div>
+    <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6  col-xs-5 p-2">
+            <a class="text-white" href="{% url 'groupCreate'%}">
+                <button type="button" class="btn btn_delete bg-primary">Guruh +</button>
+            </a>
+
+        </div>
+
+    </div>
+</div>
+<script>
+
+
+</script>
+
+
+{% endblock %}

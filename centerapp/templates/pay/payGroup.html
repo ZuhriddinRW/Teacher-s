@@ -1,0 +1,93 @@
+{% extends 'adminBase.html' %}
+{% load static %}
+{% block title %}
+Admin:Guruh o'quvchilari
+{% endblock %}
+
+
+{% block main %}
+<!--<style>-->
+<!--    .container{-->
+<!--    position:relative;-->
+<!--    width:100%;-->
+
+<!--    margin:20px auto;-->
+<!--    }-->
+<!--    table{-->
+<!--    padding;10px;-->
+<!--    width:100%;-->
+<!--    height:auto;-->
+<!--    }-->
+<!--    table thead th{-->
+<!--    margin-bottom:20px;-->
+<!--    text-align:center;-->
+<!--    padding:20px o;-->
+<!--    text-transform:capitalize;-->
+<!--    font-size:20px;-->
+<!--    }-->
+<!--    table tbody td{-->
+<!--    padding:10 px 20px;-->
+<!--    border:1px solid rgb(34,33,33);-->
+<!--    font-size:18px;-->
+<!--    text-align:left;-->
+
+<!--    }-->
+<!--    .btn_delete{-->
+<!--    padding:8 px 20px;-->
+<!--    font-size:18px;-->
+<!--    text-align:center;-->
+<!--    width:180px;-->
+<!--    display:block;-->
+<!--    background-color:brown;-->
+<!--    color:#fff;-->
+<!--    cursor:pointer;-->
+<!--    }-->
+<!--    .btn_delete:hover{-->
+<!--    background-color:rgb(83,4,4);-->
+<!--    }-->
+
+
+
+
+
+
+<!--</style>-->
+
+<h2 class="text-center text-primary">Guruhlar ro'yxati</h2>
+<div class="container">
+<div class="row ">
+
+    <table class="table table-bordered border-primary">
+        <thead>
+        <th class="text-muted">№</th>
+        <th class="text-muted">Guruh Nomi</th>
+        <th class="text-muted">O'qituvchisi</th>
+
+        </thead>
+        <tbody>
+        {%csrf_token%}
+        {% for item in groups %}
+        <tr id="{{item.id}}">
+            <td class="">{{ forloop.counter }}.</td>
+            <td class=""><a href="{% url 'payStudent' item.pk%}">{{item.groupName}}</a></td>
+
+            <td class="">{{item.teacher.lastname}} {{item.teacher}}</td>
+
+
+            <!--            <td class="p-2"><input type="checkbox" name="teacher_id[]" value="{{item.id}}" id="delete_teacher"></td>-->
+            <!--        </tr>-->
+            {% endfor %}
+
+        </tbody>
+    </table>
+
+    </div>
+
+</div>
+<script>
+
+
+</script>
+
+
+{% endblock %}

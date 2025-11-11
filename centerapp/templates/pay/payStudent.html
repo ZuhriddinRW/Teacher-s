@@ -1,0 +1,49 @@
+{% extends 'adminBase.html' %}
+{% load static %}
+
+{% block title %}
+Admin:Guruh o'quvchilari
+{% endblock %}
+
+
+{% block main %}
+
+
+<h2 class="text-center text-primary">{{groups}} guruhning o'quvchilari</h2>
+<div class="container">
+    <div class="row mt-5 ">
+
+
+    </div>
+
+    <table  class="table table-bordered border-primary">
+        <thead>
+        <th class="text-muted">№</th>
+        <th class="text-muted">Fish</th>
+        <th class="text-muted">To'lovlar</th>
+        <th class="text-muted">Tulov qilish</th>
+        </thead>
+        <tbody>
+        {%csrf_token%}
+        {% for item in students %}
+        <tr  id="{{item.id}}">
+            <td class="">{{ forloop.counter }}.</td>
+            <td class="">{{item.lastname}}  {{item.username}}</td>
+            <td class=""><a href="{% url 'payStudentView' item.pk%}">To'lovlar</a></td>
+            <td class=""><a class="btn btn-sm btn-primary " href="{% url 'payStudentCreate' item.pk %}">
+               To'lovni kiritish </a></td>
+<!--            <td class="p-2"><input type="checkbox" name="teacher_id[]" value="{{item.id}}" id="delete_teacher"></td>-->
+<!--        </tr>-->
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+</div>
+<script>
+
+
+</script>
+
+
+{% endblock %}

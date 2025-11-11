@@ -1,0 +1,24 @@
+{% extends 'adminBase.html' %}
+{% load static %}
+
+{% block title %}
+Admin:Kurs qo'shish
+{% endblock %}
+
+
+
+{% block main %}
+<h2 class="text-center text-primary">Kurs qo'shish</h2>
+
+<form action="" method="post">
+    {% csrf_token %}
+     {{form}}
+
+<div>
+     <input type="submit" CLASS="mt-4 mb-4 btn btn-primary"  value="Saqlash">
+
+</div>
+
+</form>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'loginBase.html' %}
+{% load static %}
+
+{% block title %}
+login:
+{% endblock %}
+
+
+{% block main %}
+
+<div class="mg-auto w-50 mx-auto" style="">
+    <form class="mg-auto" method="post" action="">
+        <h1 class="text-center"> Login</h1>
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit" class="btn btn-primary btn-block p-2">Kirish</button>
+
+    </form>
+</div>
+
+{% endblock %}

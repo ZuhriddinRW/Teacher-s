@@ -1,0 +1,49 @@
+{% extends 'adminBase.html' %}
+{% load static %}
+{% block title %}
+Admin:To'lovlar
+{% endblock %}
+
+
+{% block main %}
+
+<h2 class="text-center text-primary">{{student.lastname}}{{student}}ning To'lovlar</h2>
+<div class="container">
+<div class="row  ">
+
+
+    </div>
+    <table  class="table table-bordered border-primary">
+        <thead>
+        <th class="text-muted">№</th>
+        <th class="text-muted">To'lav qilingan vaqti:</th>
+
+        <th class="text-muted">To'lov miqdori:</th>
+        <th class="text-muted">Izoh:</th>
+        <th class="text-muted">Tahrirlash:</th>
+        </thead>
+        <tbody>
+        {%csrf_token%}
+        {% for item in pays %}
+        <tr  id="{{item.id}}">
+            <td class="">{{ forloop.counter }}.</td>
+            <td class="">{{item.created_at}}  </td>
+
+            <td class="">{{item.money}}(so'm)  </td>
+            <td class="">{{item.text}}  </td>
+            <td class=""><a class="btn btn-sm btn-primary " href="{% url 'payStudentUpdate' item.pk %}">
+               Tahrirlash </a> </td>
+
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+</div>
+<script>
+
+
+</script>
+
+
+{% endblock %}

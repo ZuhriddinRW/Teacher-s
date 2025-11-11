@@ -1,0 +1,78 @@
+{% extends 'adminBase.html' %}
+{% load static %}
+{% block title %}
+Gruhlar ro'yxati
+{% endblock %}
+
+{% block main %}
+
+
+<h2 class="text-center text-primary">O'qituvchilar ro'yxati</h2>
+<div class="container">
+
+    <table class="table table-bordered border-primary">
+        <thead>
+        <th class="text-muted">№</th>
+        <th class="text-muted">Ismi</th>
+        <th class="text-muted">Familyasi</th>
+        <th class="text-muted">Kirish kodi</th>
+        <!--        <th class="text-muted">O'chirish</th>-->
+        </thead>
+        <tbody>
+        {%csrf_token%}
+        {% for item in teachers %}
+        <tr id="{{item.id}}">
+            <td>{{ forloop.counter }}.</td>
+            <td class=" text-info"><a href="{% url 'teacherView' item.pk%}">{{item.user.username}}</a></td>
+            <td class=" text-info"><a href="{% url 'teacherView' item.pk%}">{{item.lastname}}</a></td>
+            <td class=" ">{{item.code}}</td>
+        </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+</div>
+<div class="text-center">
+
+
+    {% if teachers.has_other_pages %}
+    <ul class="pagination">
+        {% if teachers.has_previous %}
+        <li class="div1 active"><a href="?page = {{teachers.previous_page_number}}"> &laquo;</a></li>
+        {% else %}
+        <li class="disabled active div1"><span>&laquo;</span></li>
+        {% endif %}
+
+        {% for p in teachers.paginator.page_range %}
+        {% if teachers.number == p %}
+        <li class="active div1">
+            <span>{{p}}<span class="sr-only">(current)</span></span>
+        </li>
+        {% else %}
+        <li class="active div1">
+            <a href="?page={{ p }}">{{p}}</a>
+        </li>
+        {% endif %}
+        {% endfor %}
+
+        {% if teachers.has_next %}
+        <li class="div1 active"><a href="?page = {{teachers.next_page_number}}"> &raquo;</a></li>
+        {% else %}
+        <li class="disabled div1"><span>&raquo;</span></li>
+        {% endif %}
+    </ul>
+    {% endif %}
+</div>
+<div class="p-2">
+    <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6  col-xs-5 p-2">
+            <a class="text-white" href="{% url 'createTeacher'%}">
+                <button type="button" class="btn btn_delete bg-primary">O'qituvchi +</button>
+            </a>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

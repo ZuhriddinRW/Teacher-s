@@ -1,0 +1,33 @@
+{% extends 'adminBase.html' %}
+{% load static %}
+{% block title %}
+Admin:Guruh holati
+{% endblock %}
+
+
+
+
+{% block main %}
+
+<h2 class="text-center text-info">Guruhlarning holatlari </h2>
+<div class="container">
+
+    <table>
+        <thead>
+        <th class="text-primary">Barcha G:</th>
+        <th class="text-primary"> Yig'ilayotgan G:</th>
+        <th class="text-primary">Active G:</th>
+        <th class="text-primary"> Yakunlangan G:</th>
+        </thead>
+        <tbody>
+        {%csrf_token%}
+        <td class="p-2 text-info"><a href="{% url 'deleteGroup' %}"> Guruhlar</a></td>
+        {% for item in status %}
+        <td class="p-2 text-info"><a href="{% url 'deleteGroups' item.pk %}"> Guruhlar</a></td>
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+
+    {% endblock %}

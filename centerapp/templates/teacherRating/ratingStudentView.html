@@ -1,0 +1,48 @@
+{% extends 'tachBase.html' %}
+{% load static %}
+{% block title %}
+O'quvchining ballari
+{% endblock %}
+
+{% block main %}
+
+
+<h2 class="text-center text-primary">{{student.lastname}}{{student}}ning baholari</h2>
+<div class="container">
+
+    <table class="table table-bordered border-primary">
+        <thead>
+        <th class="text-muted">№</th>
+        <th class="text-muted">Baholangan vaqti:</th>
+        <th class="text-muted">Baho tahrirlangan vaqti:</th>
+        <th class="text-muted">Baho:</th>
+        <th class="text-muted">Tahrirlash:</th>
+        </thead>
+        <tbody>
+        {%csrf_token%}
+        {% for item in rating %}
+        <tr id="{{item.id}}">
+            <td class=" ">{{ forloop.counter }}.</td>
+            <td class=" ">{{item.created_at}}</td>
+            {% if item.updated_at %}
+            <td class=" ">{{item.updated_at}}</td>
+            {%else%}
+            <td class=" "> Tahrirlanmagan</td>
+            {%endif%}
+            <td class=" ">{{item.rating}}</td>
+            <td class=" "><a class="btn btn-sm btn-primary " href="{% url 'teacherRatingStudentUpdate' item.pk %}">
+                Tahrirlash </a></td>
+
+            {% endfor %}
+
+        </tbody>
+    </table>
+
+</div>
+<script>
+
+
+</script>
+
+
+{% endblock %}

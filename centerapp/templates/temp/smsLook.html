@@ -1,0 +1,18 @@
+{% extends 'adminBase.html' %}
+{% load static %}
+{% block title %}
+Sms
+{% endblock %}
+
+{% block main %}
+
+<h2 class="text-center text-primary">sms</h2>
+
+<form action="" method="post">
+    {% csrf_token %}
+     {{form}}
+
+
+</form>
+
+{% endblock %}

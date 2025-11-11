@@ -1,0 +1,52 @@
+{% extends 'adminBase.html' %}
+{% load static %}
+{% block title %}
+Admin:O'quvchning ma'lumotlari
+{% endblock %}
+{% block main %}
+
+
+<h2 class="text-center text-primary">{{student.username}} {{student}}ning ma'lumotlari</h2>
+
+<div class="container">
+
+    <table class="table table-bordered border-primary">
+        <thead>
+        <th class="text-muted">Ismi</th>
+        <th class="text-muted">Familyasi</th>
+        <th class="text-muted">Otasining ismi</th>
+        <th class="text-muted">To'g'ilgan yili</th>
+        <th class="text-muted">Tel</th>
+        <th class="text-muted">Guruh nomi</th>
+        <th class="text-muted">Tahrirlash</th>
+
+
+        </thead>
+        <tbody>
+        {%csrf_token%}
+
+        <tr id="{{item.id}}">
+            <td class=""><a>{{student.username}}</a></td>
+            <td class=""><a>{{student.lastname}}</a></td>
+            <td  class=""><a>{{student.middleName}}</a></td>
+            <td class=""><a>{{student.year}}</a></td>
+            <td class=""><a href="tel:{{student.phone}}">{{student.phone}}</a></td>
+            <td class="">{{student.group}}</td>
+            <td class="">
+            <a class="btn btn-sm btn-warning " href="{% url 'studentUpdate' student.pk %}">
+               Tahrirlash </a>
+
+            </td>
+        </tr>
+
+
+        </tbody>
+    </table>
+    <div class="mt-2 p-2">
+
+
+    </div>
+</div>
+
+
+{% endblock %}

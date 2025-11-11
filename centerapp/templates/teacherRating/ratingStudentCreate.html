@@ -1,0 +1,22 @@
+{% extends 'tachBase.html' %}
+{% load static %}
+{% block title %}
+Ballni tahrirlash
+{% endblock %}
+
+
+{% block main %}
+ <h2 class="text-center text-primary">Ball qo'yish</h2>
+
+<form action="" method="post">
+    {% csrf_token %}
+     {{form}}
+
+<div>
+     <input type="submit" CLASS="mt-4 mb-4 btn btn-primary"  value="Saqlash">
+
+</div>
+
+</form>
+
+{% endblock %}

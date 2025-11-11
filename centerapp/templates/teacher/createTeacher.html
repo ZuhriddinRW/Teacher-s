@@ -1,0 +1,22 @@
+{% extends 'adminBase.html' %}
+{% load static %}
+{% block title %}
+Admin:O'qituvchi kiritish
+{% endblock %}
+
+{% block main %}
+
+<h2 class="text-center text-primary">
+    O'qituvchi qo'shish
+</h2>
+<form action="" method="post" >
+    {% csrf_token %}
+    {{ info_form.as_p }}
+    {{ profile_form.as_p }}
+
+
+    <button type="submit" class="btn btn-primary btn-block p-2">Saqlash</button>
+</form>
+
+
+{% endblock %}
