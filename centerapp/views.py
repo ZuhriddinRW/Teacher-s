@@ -323,6 +323,7 @@ class Rate_view ( View, ) :
                 rate.month = month
                 rate.save ()
             return redirect ( 'deleteTeacher' )
+        return None
 
 
 def courseCreate(request) :
@@ -355,6 +356,7 @@ class Course_View ( View ) :
                 student.delete ()
 
             return redirect ( 'courses' )
+        return None
 
 
 def courseUpdate(request, pk) :
@@ -635,6 +637,7 @@ class VisitStudent_view ( View, ) :
                 visit.save ()
 
             return redirect ( 'teacherVisit' )
+        return None
 
 
 def teacherRatingGroup(request) :
