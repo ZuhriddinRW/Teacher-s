@@ -2,43 +2,43 @@ from django.http import HttpResponse
 from django.shortcuts import redirect
 
 
-def unauthenticated_user(view_func):
-    def wrapper_func(request, *args, **kwargs):
-        if request.user.is_authenticated:
-            print("teacher ==============")
-            view_func()
-            return redirect('adminUser')
-        else:
-            return redirect("login")
+def unauthenticated_user(view_func) :
+    def wrapper_func(request, *args, **kwargs) :
+        if request.user.is_authenticated :
+            print ( "teacher ==============" )
+            view_func ()
+            return redirect ( 'adminUser' )
+        else :
+            return redirect ( "login" )
 
     return wrapper_func
 
 
-def allowed_users(allowed_roles=[]):
-    def decorator(view_func):
-        def wrapper_func(request, *args, **kwargs):
+def allowed_users(allowed_roles=[]) :
+    def decorator(view_func) :
+        def wrapper_func(request, *args, **kwargs) :
             group = None
-            if request.user.groups.exists():
-                group = request.user.groups.all()[0].name
+            if request.user.groups.exists () :
+                group = request.user.groups.all ()[0].name
 
-            if group in allowed_roles:
-                return view_func(request, *args, **kwargs)
-            else:
-                return HttpResponse(' You are not authorized to view')
+            if group in allowed_roles :
+                return view_func ( request, *args, **kwargs )
+            else :
+                return HttpResponse ( ' You are not authorized to view' )
 
         return wrapper_func
 
     return decorator
 
 
-def admin_only(view_func):
-    def wrapper_function(request, *args, **kwargs):
+def admin_only(view_func) :
+    def wrapper_function(request, *args, **kwargs) :
         group = None
-        if request.user.groups.exists():
-            group = request.user.groups.all()[0].name
-        if group == 'teacher':
-            return redirect('teacher')
-        if group == 'admin':
-            return view_func(request, *args, **kwargs)
+        if request.user.groups.exists () :
+            group = request.user.groups.all ()[0].name
+        if group == 'teacher' :
+            return redirect ( 'teacher' )
+        if group == 'admin' :
+            return view_func ( request, *args, **kwargs )
 
     return wrapper_function

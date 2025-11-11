@@ -1,31 +1,25 @@
 {% load static %}
-<!-- Sidebar -->
 <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
     <div class="position-sticky">
         <div class="list-group list-group-flush  mt-3">
-            <a
-                    href="#"
-                    class="list-group-item list-group-item-action py-2 ripple bg-primary"
-                    aria-current="true"
-            >
+            <a href="#" class="list-group-item list-group-item-action py-2 ripple bg-primary" aria-current="true">
                 <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Asos</span>
             </a>
             <a href="#" class="list-group-item list-group-item-action py-2 ripple active">
                 <i class="fas fa-chart-area fa-fw me-3"></i><span>Webiste traffic</span>
             </a>
-            <a href="#" class="list-group-item list-group-item-action py-2 ripple"
-            ><i class="fas fa-lock fa-fw me-3"></i><span>Password</span></a
-            >
-            <a href="{% url 'categoryCreate' %}" class="list-group-item list-group-item-action py-2 ripple"
-            ><i class="fas fa-chart-line fa-fw me-3"></i><span>Category Create</span></a
-            >
-            <a href="{% url 'categoryView' %}" class="list-group-item list-group-item-action py-2 ripple"
-            ><i class="fas fa-chart-line fa-fw me-3"></i><span>Category View</span></a
-            >
-            <a href="{% url 'productCreate' %}" class="list-group-item list-group-item-action py-2 ripple"
-            ><i class="fas fa-chart-line fa-fw me-3"></i><span>Product Create</span></a
-            >
+            <a href="#" class="list-group-item list-group-item-action py-2 ripple">
+                <i class="fas fa-lock fa-fw me-3"></i><span>Password</span>
+            </a>
+            <a href="{% url 'categoryCreate' %}" class="list-group-item list-group-item-action py-2 ripple">
+                <i class="fas fa-chart-line fa-fw me-3"></i><span>Category Create</span>
+            </a>
+            <a href="{% url 'categoryView' %}" class="list-group-item list-group-item-action py-2 ripple">
+                <i class="fas fa-chart-line fa-fw me-3"></i><span>Category View</span>
+            </a>
+            <a href="{% url 'productCreate' %}" class="list-group-item list-group-item-action py-2 ripple">
+                <i class="fas fa-chart-line fa-fw me-3"></i><span>Product Create</span>
+            </a>
         </div>
     </div>
 </nav>
-<!-- Sidebar -->
